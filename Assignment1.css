@@ -49,6 +49,40 @@ table {
 .wrap{
     height: 30px;
 }
+#menu_control{
+    position: absolute;   /*讓那個打勾消失*/
+    opacity: 0;     /*隱藏 文字消失*/
+}
+.menu_btn{
+    width: 24px;
+    height: 24px;
+
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 4px;
+}
+.menu_btn span{
+    opacity: 0;/*隱藏 文字消失*/
+    width: 1px;
+    height: 1px;
+    display: block;
+    overflow: hidden;
+}
+.menu_btn::before{
+    content: '';
+    position: absolute;
+    height: 2px;
+    left: 4px;
+    width: 16px;
+    background-color: #aaa;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 0px 6px 0px #aaa,
+                0px -6px 0px #aaa
+}
+
 .title{
     float: left;
     text-align: center;
@@ -57,21 +91,21 @@ table {
     font-size: 20px;
     text-align: center;
     line-height: 30px;
-    padding-left: 10px;
+    margin-left: 10px;
 }
-.Item{
-    float: right;
-    font-size: 20px;
+nav{
+    width: 80%;
+    height: calc(100vh - 50px);
+    background-color: #282923;
+    position: absolute;
+    top: 50px;
+    left: -100%;
+    justify-content:flex-end;
 }
-.Item ul {
-    float: right;
-}
-.Item ul li{
-    float: left;
-    padding-right: 10px;
-    padding-left: 10px;
-    text-align: center;
-    line-height: 30px;
+nav a{
+    display: block;
+    text-decoration: none;
+    padding: 10px 20px;    
 }
 .header{
     height: 300px;
@@ -104,7 +138,8 @@ table {
     line-height: 50px;
     background:	#C4E1FF;
 }
-@media screen and (max-width: 1200px) {
+
+@media screen and (min-width: 1200px) {
     .box {
         width: 45%;
     }
@@ -114,8 +149,12 @@ table {
     .box p{
         width: 100%;
     }
+    .item ul li{
+        display: flex;
+    }
 }
-@media  screen and (max-width: 600px) {
+
+@media  screen and (min-width: 600px) {
     .box {
         width: 90%;
     }
@@ -124,5 +163,27 @@ table {
     }
     .box p{
         width: 100%;
+    }
+    .menu_btn{ display: none; }
+    .title p{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .title p{
+        margin-top: 0;
+    }   
+    nav{
+        position: relative;
+        left: 0;
+        display: flex;
+        width: auto;
+        height: auto;
+        top: 0;
+        background-color: transparent;
+    }
+    nav a{
+        border-bottom: none;
+        justify-content: flex-end;
     }
 }
